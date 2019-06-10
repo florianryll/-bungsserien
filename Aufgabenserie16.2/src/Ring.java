@@ -1,7 +1,7 @@
 
-public class Ring<X extends Element> {
+public class Ring<X> {
 	int maxSize;
-	X current;
+	Element current;
 
 	public Ring(int maxSize) throws maxSizeSmallerThenOneExeption {
 		if (maxSize < 1) {
@@ -12,32 +12,33 @@ public class Ring<X extends Element> {
 
 	public void add() throws elementEQNullExeption, maxSizeIsReachedExeption {
 
-		X tmp = current;
+		Element tmp = current;
 		int elementCount = 0;
 		try {
 			do {
 				elementCount++;
 			} while (next() != tmp);
+			if (elementCount == maxSize) {
+				throw new maxSizeIsReachedExeption();
+			} else {
+				current.insertAfter();
+				
+			}
 		} catch (noElementInRingExeption e) {
-			current = new X();
-		}
-		if (elementCount == maxSize) {
-			throw new maxSizeIsReachedExeption();
-		} else {
-			current.insertAfter();
+			current = new Element();
 		}
 	}
 
-	public X current() {
+	public Element current() {
 		return current;
 	}
 
-	public X next() throws noElementInRingExeption {
+	public Element next() throws noElementInRingExeption {
 		if (current == null) {
 			throw new noElementInRingExeption();
 		}
-		X tmp = current;
-		current = (X) current.next();
+		Element tmp = current.next();
+		current = current.next();
 		return tmp;
 	}
 }

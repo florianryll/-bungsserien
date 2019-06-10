@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Element implements RingElement {
-	Element successor;
+	Element successor=this;
 	int id;
 
 	public Element() {
@@ -32,8 +32,7 @@ public class Element implements RingElement {
 
 	@Override
 	public int getId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return id;
 	}
 
 	public void setSuccessor(Element successor) {
