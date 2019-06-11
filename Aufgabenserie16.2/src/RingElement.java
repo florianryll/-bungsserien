@@ -1,7 +1,7 @@
 public interface RingElement {
 	public RingElement next();
 
-	public void insertAfter();
+	public void insertAfter(Object object);
 
 	public void delete();
 

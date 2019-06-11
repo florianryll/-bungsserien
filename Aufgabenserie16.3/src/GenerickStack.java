@@ -1,19 +1,24 @@
 
-public class GenerickStack<T> implements GenInterface<T>{
+public class GenerickStack<T> implements GenInterface<T> {
 
-	T object;
+	//T object;
 	Knoten<T> aktuellesElement;
+
 	@Override
 	public void push(T t) {
-		// TODO Auto-generated method stub
-		
+		Knoten<T> knoten = new Knoten<T>(aktuellesElement, t);
+		aktuellesElement = knoten;
 	}
+
 	@Override
-	public T pop() {
+	public T pop() throws elementNullExeption {
 		T tmp = aktuellesElement.getObjekt();
-		
-		
+		if (aktuellesElement == null) {
+			throw new elementNullExeption();
+		} else {
+			aktuellesElement = aktuellesElement.getVorElement();
+		}
 		return tmp;
 	}
-	
+
 }

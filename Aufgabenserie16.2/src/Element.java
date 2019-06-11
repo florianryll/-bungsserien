@@ -1,29 +1,31 @@
 import java.util.Random;
 
-public class Element implements RingElement {
-	Element successor=this;
+public class Element<X> implements RingElement {
+	Element<X> successor = this;
 	int id;
+	X content;
 
-	public Element() {
+	public Element(X content) {
+		this.content = content;
 		Random rng = new Random();
 		this.id = rng.nextInt();
 	}
-	
+
 	@Override
-	public Element next() {
+	public Element<X> next() {
 		return successor;
 	}
 
 	@Override
-	public void insertAfter() {
-		Element insert = new Element();
+	public void insertAfter(Object x) {
+		Element<X> insert = new Element<X>((X) x);
 		insert.setSuccessor(successor);
 		this.setSuccessor(insert);
 	}
 
 	@Override
 	public void delete() {
-		Element tmp = successor;
+		Element<X> tmp = successor;
 		while (tmp.next() != this) {
 			tmp = tmp.next();
 		}
@@ -35,8 +37,10 @@ public class Element implements RingElement {
 		return id;
 	}
 
-	public void setSuccessor(Element successor) {
+	public void setSuccessor(Element<X> successor) {
 		this.successor = successor;
 	}
+
+	
 
 }
