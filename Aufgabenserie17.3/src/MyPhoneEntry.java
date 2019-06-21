@@ -22,8 +22,13 @@ public class MyPhoneEntry implements PhoneEntry {
 	}
 
 	@Override
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getPhoneNumber() throws noPhoneNumberSavedExeception {
+		if(phoneNumber==null) {
+			throw new noPhoneNumberSavedExeception();
+		}else {
+			return phoneNumber;
+		}
+		
 	}
 
 }

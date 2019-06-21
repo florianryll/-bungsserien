@@ -5,5 +5,5 @@
 public interface PhoneEntry {
 	public String getName();
 
-	public String getPhoneNumber();
+	public String getPhoneNumber() throws noPhoneNumberSavedExeception;
 }
