@@ -4,6 +4,13 @@ public abstract class DreieckArten implements FlaechenInhalt{
 	double b;
 	double c;
 	
+	public DreieckArten(double a, double b, double c) {
+		super();
+		this.a = a;
+		this.b = b;
+		this.c = c;
+	}
+
 	public double flaeche(){
 		return 1/2*this.hoehe()*this.getG();
 	}
@@ -19,7 +26,11 @@ public abstract class DreieckArten implements FlaechenInhalt{
 	}
 	
 	public double winkel() {
-		return a;
-		
+		return Math.acos((a*a-b*b-c*c)/(-2*a*b));
+	}
+	public abstract double berechneWinkel();
+	
+	public double umfang() {
+		return a+b+c;
 	}
 }
